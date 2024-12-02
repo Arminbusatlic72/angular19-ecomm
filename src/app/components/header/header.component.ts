@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { PrimaryButtonComponent } from '../primary-button/primary-button.component';
 
 @Component({
@@ -8,7 +8,7 @@ import { PrimaryButtonComponent } from '../primary-button/primary-button.compone
     <div class="bg-slate-100 px-4 py-3 shadow-md flex justify-between">
       <span>My store</span
       ><app-primary-button
-        label="Armin's button"
+        [label]="label()"
         (btnClicked)="handleButtonClick()"
       ></app-primary-button>
       <app-primary-button label="Hello" (btnClicked)="handleHelloClick()" />
@@ -19,6 +19,7 @@ import { PrimaryButtonComponent } from '../primary-button/primary-button.compone
   `,
 })
 export class HeaderComponent {
+  label = signal('Button Label');
   handleButtonClick() {
     alert('button click handled');
   }
