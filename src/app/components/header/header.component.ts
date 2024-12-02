@@ -5,13 +5,14 @@ import { PrimaryButtonComponent } from '../primary-button/primary-button.compone
   selector: 'app-header',
   imports: [PrimaryButtonComponent],
   template: `
-    <div class="bg-slate-100 px-4 py-3 shadow-md flex justify-between">
+    <div
+      class="bg-slate-100 px-4 py-3 shadow-md flex justify-between items-center"
+    >
       <span>My store</span
       ><app-primary-button
         [label]="label()"
         (btnClicked)="handleButtonClick()"
       ></app-primary-button>
-      <app-primary-button label="Hello" (btnClicked)="handleHelloClick()" />
     </div>
   `,
   styles: `
@@ -22,8 +23,5 @@ export class HeaderComponent {
   label = signal('Button Label');
   handleButtonClick() {
     alert('button click handled');
-  }
-  handleHelloClick() {
-    alert('Hello click handled');
   }
 }
