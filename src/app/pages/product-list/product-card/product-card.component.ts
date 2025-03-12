@@ -1,9 +1,11 @@
-import { Component, input } from '@angular/core';
+import { Component, input, inject } from '@angular/core';
 import { Product } from '../../../models/products.model';
+import { PrimaryButtonComponent } from '../../../components/primary-button/primary-button.component';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-product-card',
-  imports: [],
+  imports: [PrimaryButtonComponent],
   template: `
     <div
       class="bg-white shadow-md border rounded-xl p-6 flex flex-col gap-6 relative"
@@ -17,11 +19,11 @@ import { Product } from '../../../models/products.model';
       <div class="flex flex-col">
         <span class="text-md font-bold">{{ product().title }}</span>
         <span class="text-sm"> {{ '$' + product().price }}</span>
-        <!-- <app-primary-button
-          (btnClicked)="cartService.addToCart(product())"
+        <app-primary-button
           class="mt-3"
           label="Add to Cart"
-        /> -->
+          (btnClicked)="cartService.addToCart(product())"
+        />
       </div>
 
       <span
@@ -37,4 +39,5 @@ import { Product } from '../../../models/products.model';
 })
 export class ProductCardComponent {
   product = input.required<Product>();
+  cartService = inject(CartService);
 }
