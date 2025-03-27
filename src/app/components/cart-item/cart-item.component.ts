@@ -12,9 +12,11 @@ import { CardButtonComponent } from '../card-button/card-button.component';
           [src]="product().image"
           class="w-[100px] h-[50px] object-contain"
         />
-        <div class="flex flex-col">
+        <div class="flex flex-col gap-4">
           <span class="font-bold">{{ product().title }}</span>
-          <span>{{ 'EUR ' + product().price }}</span>
+          <div class="flex gap-4">
+            <span>EUR</span> <span>{{ product().price }}</span>
+          </div>
         </div>
       </div>
       <app-card-button
